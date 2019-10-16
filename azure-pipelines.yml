@@ -15,9 +15,11 @@ variables:
 
 steps:
 - script: |
+    echo * docker build -f Dockerfile -t $(imageName):$(build.buildId) -t $(imageName):latest .
     docker build -f Dockerfile -t $(imageName):$(build.buildId) -t $(imageName):latest .
+    echo * docker login -u $(DOCKER_HUB_USER) -p $(DOCKER_HUB_PWD)
     docker login -u $(DOCKER_HUB_USER) -p $(DOCKER_HUB_PWD)
-    echo $(DOCKER_HUB_USER)/$(imageName):$(build.buildId)
-    docker push $(DOCKER_HUB_USER)/$(imageName):$(build.buildId)
+    echo * docker push $(imageName):$(build.buildId)
+    docker push $(imageName):$(build.buildId)
   displayName: Docker build
   
