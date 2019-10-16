@@ -9,7 +9,7 @@ pool:
 variables:
   - group: secret
   - name: imageName
-    value: pipelines-go:$(build.buildId)'
+    value: pipelines-go:$(build.buildId)
   - name: dockerHub
     value: 'dockerhub'
 
