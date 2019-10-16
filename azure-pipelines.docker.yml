@@ -8,11 +8,11 @@ pool:
 
 variables:
   imageName: 'pipelines-go:$(build.buildId)'
+  dockerHub: 'dockerhub'
 
 steps:
-- task: Docker@2
+- script: docker build -f Dockerfile -t $(imageName) .
   displayName: Build image
-  inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: Dockerfile 
+- script: docker push $(imageName):latest
+  displayName: Push image
+  
