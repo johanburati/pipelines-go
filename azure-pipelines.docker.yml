@@ -13,6 +13,6 @@ variables:
 steps:
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: Build image
-- script: docker push $(imageName):latest
+- script: docker push $(imageName)
   displayName: Push image
   
