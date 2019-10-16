@@ -17,7 +17,7 @@ steps:
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: Build image
 - script: |
-    docker build -f Dockerfile -t $(imageName) .
+    docker build -f Dockerfile -t $(DOCKER_HUB_USER)/$(imageName) .
     docker login -u $(DOCKER_HUB_USER) -p $(DOCKER_HUB_PWD)
     docker push $(DOCKER_HUB_USER)/$(imageName)
   displayName: Docker build
