@@ -7,9 +7,11 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  imageName: 'pipelines-go:$(build.buildId)'
-  dockerHub: 'dockerhub'
-  group: secret
+  - group: secret
+  - name: imageName
+    value: pipelines-go:$(build.buildId)'
+  - name: dockerHub
+    value: 'dockerhub'
 
 steps:
 - script: docker build -f Dockerfile -t $(imageName) .
